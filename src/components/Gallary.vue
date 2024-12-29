@@ -15,10 +15,8 @@
       </video>
     </div>
     <div class="parallax_layer_2 basic_setting">
-      <video autoplay muted loop class="video-background" >
-        <source src="../assets/video/google.mp4" type="video/mp4" />
-        Your browser does not support the video tag.
-      </video>
+      <img class="g" src="../assets/googleimg.jpg">
+   
     </div>
     <div class="parallax_layer_3 basic_setting">
       <video autoplay muted loop class="video-background" >
@@ -101,13 +99,18 @@ h1 {
   width: 200%;
   height: 400px;
 }
-
-.parallax_container .parallax_layer_2 {
-  top: 80%;
-  right: -20%;
-  background-position: center;
+.g{
+  transform: rotateZ(0deg);
  
-  transform: translateZ(-6px) rotateZ(0deg);
+}
+.parallax_container .parallax_layer_2 {
+  transform: rotateZ(0deg);
+  top: 130%;
+  top: 100%;
+  right: 10%;
+  width: 50%;
+  height: 80%;
+  
 
 }
 
