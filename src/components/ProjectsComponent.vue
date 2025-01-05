@@ -116,7 +116,7 @@ export default {
           toolsUsed: ["Flask", "React Js", "Google Api"],
           githubLink: "https://github.com/andover88/projectx",
           images: [
-            "project4-1.jpg", "project4-2.jpg", "project4-3.jpg"
+            "../src/assets/googleimg.jpg", 
           ],
           githubButton: {
             text: "View on GitHub",
@@ -129,7 +129,7 @@ export default {
           toolsUsed: ["PHP", "Bootstrap", "MySql"],
           githubLink: "https://github.com/yourusername/project5",
           images: [
-            "project5-1.jpg", "project5-2.jpg", "project5-3.jpg"
+            "../src/assets/face.jpg",
           ],
           githubButton: {
             text: "View on GitHub",
