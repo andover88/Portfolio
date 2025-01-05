@@ -27,7 +27,7 @@
     "gsap": "^3.12.5",
     "hooper": "^0.3.4",
     "jquery": "^3.7.1",
-    "preline": "^2.6.0",
+    "preline": "^2.7.0",
     "primevue": "^4.2.2",
     "simple-parallax-js": "^6.0.1",
     "slick-carousel": "^1.8.1",
