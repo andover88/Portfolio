@@ -1,0 +1,37 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Atomic+Age&family=Foldit:wght@100..900&family=Frijole&family=Mansalva&family=Warnes&display=swap');
+html, body {
+  /* background-color:black; */
+
+  
+}
+.sec1::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for all browsers */
+.sec1 {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+
+
+
+
+/* General styles */
+
+
+
+
+
+
+
+.box {
+  height: 1vh;
+  width: 100vw;
+  display: block;
+}

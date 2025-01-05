@@ -129,7 +129,7 @@ export default {
           toolsUsed: ["PHP", "Bootstrap", "MySql"],
           githubLink: "https://github.com/yourusername/project5",
           images: [
-            "../src/assets/face.jpg",
+            "../src/assets/face.jpgyy",
           ],
           githubButton: {
             text: "View on GitHub",
