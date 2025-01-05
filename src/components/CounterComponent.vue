@@ -1,39 +1,29 @@
 <template>
-  <div class="flex flex-col items-center justify-center min-h-screen w-full">
+  <div class="flex flex-col items-center  justify-center overflow-x-hidden mx-auto">
     <!-- Background SVG -->
-    <div class="absolute inset-0">
-      <div class="parallax-container">
-        <div class="triangle"></div>
-        <div class="half-star"></div>
-      </div>
-    </div>
+ 
 
-    <div class="w-full px-4 mx-auto sm:px-6 lg:px-8 text-center text-black">
+    <div class=" px-4 sm:px-6 lg:px-8 text-center text-black">
       <div class="mx-auto">
-        <h2
-          class="text-2xl font-extrabold leading-9 animate-slide-right sm:text-2xl sm:leading-10"
-          :style="animatedTextStyle"
-        >
-          <!-- Coding Milestones -->
-        </h2>
-        <h1 class="mt-3 leading-7 animated-fall text-gray-500">
-          Achievements that count!
+
+        <h1 class="title mt-24 leading-7 animated-fall text-4xl text-gray-500">
+          Time Line
         </h1>
       </div>
     </div>
 
-    <div class="pb-12 mt-10 sm:pb-16 w-full">
+    <div class=" ">
       <div class="relative">
-        <div class="relative w-full px-10 mx-auto sm:px-6 lg:px-8">
-          <div class="mx-auto">
+        <div class=" w-full">
+          <div >
             <dl
-              class="rounded-lg shadow-lg flex flex-row justify-center items-center bg-gray-900 w-full"
+              class="rounded-lg  flex flex-row justify-center items-center"
             >
               <!-- Days -->
               <div
-                class="flex flex-col p-6 text-center border-b sm:border-0 sm:border-r border-gray-100 flex-1"
+                class="flex flex-col p-6 text-center  flex-1"
               >
-                <dt class="text-lg   text-gray-300">
+                <dt class="count text-lg">
                   Days
                 </dt>
                 <dd
@@ -45,9 +35,9 @@
               </div>
               <!-- Hours Coding -->
               <div
-                class="flex flex-col p-6 text-center border-b sm:border-0 sm:border-r border-gray-100 flex-1"
+                class="flex flex-col p-6 text-center border-b sm:border-0 sm:border-r border-gray-100 flex-1 mx-auto"
               >
-                <dt class="text-lg  text-gray-300">
+                <dt class="count text-lg ">
                   Hours
                 </dt>
                 <dd
@@ -59,7 +49,7 @@
               </div>
               <!-- Deployed Applications -->
               <div class="flex flex-col p-6 text-center border-b sm:border-0 sm:border-r border-gray-100 flex-1">
-                <dt class="text-lg  text-gray-300">
+                <dt class="count text-lg ">
                   Deployed
                 </dt>
                 <dd
@@ -78,14 +68,18 @@
 </template>
 
 <style scoped>
-h1 {
-  font-family: "Sigmar One", serif;
+.title {
+  font-family: "Bungee Hairline", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+dt.count {
+  font-family: "Syne Mono", serif;
   font-weight: 400;
   font-style: normal;
 }
 
 .mt-3 {
-  font-family: "Sigmar One", serif;
   font-weight: 400;
   font-style: normal;
   font-size: 3rem;
@@ -94,13 +88,11 @@ h1 {
   
 }
 dt {
-  font-family: "Bubbler One", serif;
   font-weight: 400;
   font-style: normal;
 }
 
 dd{
-  font-family: "Bubbler One", serif;
   font-weight: 400;
   font-style: normal;
 }
@@ -114,7 +106,7 @@ dd{
   height: 100%;
   pointer-events: none;
   overflow: hidden;
-  z-index: -1;
+ 
 }
 
 

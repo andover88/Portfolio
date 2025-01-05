@@ -195,7 +195,6 @@ export default {
 .content-overlay > * {
   text-align: center;
   color: #fff;
-  font-family: "Julius Sans One", sans-serif;
   font-size: 1rem;
 }
 </style>

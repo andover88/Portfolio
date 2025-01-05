@@ -1,212 +1,78 @@
 <template>
-
-<section class="py-12 bg-gradient-to-r text-gray-100 sm:py-12 lg:py-16  overflow-hidden">
-    <div class="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
-        <div class="max-w-xl mx-auto text-center xl:max-w-2xl">
-            <h2 class="text-3xl font-bold leading-tight text-gray-50 sm:text-4xl xl:text-5xl mb-6 mx-a">We are just
-                getting started!</h2>
-            <p class="mb-4">We are creating a tool that helps you be more productive and efficient when building
-                websites and webapps</p>
-
+  <div class="container mx-auto px-6 py-12">
+    <!-- Features Section -->
+    <div class="flex flex-col md:flex-row gap-10">
+      <!-- Left Column -->
+      <div class="flex-1">
+        <div class="text-3xl font-bold mb-6 text-gray-900">Features</div>
+        <div class="space-y-6">
+          <div class="feature-item flex items-center">
+            <!-- Icon -->
+            <i class="fas fa-cogs text-2xl text-green-500 mr-4"></i>
+            <div>
+              <h3 class="font-semibold text-xl text-gray-800">Simple & Unique</h3>
+              <p class="text-gray-600">Easy to use and designed to stand out.</p>
+            </div>
+          </div>
+          <div class="feature-item flex items-center">
+            <!-- Icon -->
+            <i class="fas fa-layer-group text-2xl text-green-500 mr-4"></i>
+            <div>
+              <h3 class="font-semibold text-xl text-gray-800">Layered & Well Documented</h3>
+              <p class="text-gray-600">Well-structured with clear documentation.</p>
+            </div>
+          </div>
+          <div class="feature-item flex items-center">
+            <!-- Icon -->
+            <i class="fas fa-paint-brush text-2xl text-green-500 mr-4"></i>
+            <div>
+              <h3 class="font-semibold text-xl text-gray-800">World-Class UI Design</h3>
+              <p class="text-gray-600">Designed with the latest trends and user experience in mind.</p>
+            </div>
+          </div>
         </div>
-        <div
-            class="grid max-w-4xl lg:max-w-6xl grid-cols-1 mx-auto mt-8 text-center gap-y-4 sm:gap-x-8 sm:grid-cols-2 lg:grid-cols-3 sm:mt-12 lg:mt-20 sm:text-left">
-            <div class="relative">
-                <div class="absolute -inset-1">
-                    <div
-                        class="w-full h-full rotate-180 opacity-30 blur-lg filter bg-gradient-to-r from-yellow-400 via-pink-500 to-green-600">
-                    </div>
-                </div>
-                <div class="relative overflow-hidden bg-white shadow-md rounded-xl h-full">
-                    <div class="p-9"><svg class="w-12 h-12 mx-auto text-gray-400 sm:mx-0" viewBox="0 0 24 24"
-                            fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M11 8L20 8" stroke="#111827" stroke-width="2" stroke-linecap="round"></path>
-                            <path d="M4 16L14 16" stroke="#111827" stroke-width="2" stroke-linecap="round"></path>
-                            <ellipse cx="7" cy="8" rx="3" ry="3" transform="rotate(90 7 8)" stroke="#111827"
-                                stroke-width="2" stroke-linecap="round"></ellipse>
-                            <ellipse cx="17" cy="16" rx="3" ry="3" transform="rotate(90 17 16)" stroke="#111827"
-                                stroke-width="2" stroke-linecap="round"></ellipse>
-                        </svg>
-                        <h3 class="mt-6 text-2xl font-bold text-gray-900 sm:mt-10">Realtime Collaboration</h3>
-                        <p class="mt-6 text-base text-gray-600">Collaborate in realtime with other editors in a
-                            project. See what othe editors are doing and edit even a simple text together</p>
-                    </div>
-                </div>
-            </div>
-            <div class="overflow-hidden bg-white shadow-md rounded-xl">
-                <div class="p-9"><svg class="w-12 h-12 mx-auto text-gray-400 sm:mx-0" viewBox="0 0 24 24" fill="none"
-                        xmlns="http://www.w3.org/2000/svg">
-                        <rect x="13" y="14" width="2" height="2" rx="1" fill="#111827"></rect>
-                        <rect x="7" y="11" width="2" height="6" rx="1" fill="#111827"></rect>
-                        <rect x="11" y="13" width="2" height="6" rx="1" transform="rotate(90 11 13)" fill="#111827">
-                        </rect>
-                        <rect x="16" y="12" width="2" height="2" rx="1" fill="#111827"></rect>
-                        <path
-                            d="M14 8V8C14 7.58326 14 7.37488 13.9655 7.19144C13.8455 6.5546 13.4245 6.01534 12.8358 5.74455C12.6662 5.66654 12.464 5.616 12.0597 5.51493L12 5.5C11.5388 5.3847 11.3082 5.32706 11.1171 5.233C10.5686 4.96315 10.1737 4.45731 10.0449 3.85979C10 3.65151 10 3.41382 10 2.93845V2"
-                            stroke="#111827" stroke-width="2" stroke-linecap="round"></path>
-                        <path
-                            d="M3 14C3 11.4412 3 10.1618 3.61994 9.28042C3.77954 9.05351 3.96572 8.85041 4.17372 8.6763C4.98164 8 6.15442 8 8.5 8H15.5C17.8456 8 19.0184 8 19.8263 8.6763C20.0343 8.85041 20.2205 9.05351 20.3801 9.28042C21 10.1618 21 11.4412 21 14C21 16.5588 21 17.8382 20.3801 18.7196C20.2205 18.9465 20.0343 19.1496 19.8263 19.3237C19.0184 20 17.8456 20 15.5 20H8.5C6.15442 20 4.98164 20 4.17372 19.3237C3.96572 19.1496 3.77954 18.9465 3.61994 18.7196C3 17.8382 3 16.5588 3 14Z"
-                            stroke="#111827" stroke-width="2"></path>
-                    </svg>
-                    <h3 class="mt-6 text-2xl font-bold text-gray-900 sm:mt-10">History of Edits</h3>
-                    <p class="mt-6 text-base text-gray-600">Go back and forth your history of changes and
-                        restore your designs to any point in time</p>
-                </div>
-            </div>
-            <div class="relative">
-                <div class="absolute -inset-1">
-                    <div
-                        class="w-full h-full rotate-180 opacity-30 blur-lg filter bg-gradient-to-r from-yellow-400 via-pink-500 to-green-600">
-                    </div>
-                </div>
-                <div class="relative overflow-hidden bg-white shadow-md rounded-xl h-full">
-                    <div class="p-9"><svg class="w-12 h-12 mx-auto text-gray-400 sm:mx-0" viewBox="0 0 24 24"
-                            fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M11 8L20 8" stroke="#111827" stroke-width="2" stroke-linecap="round"></path>
-                            <path d="M4 16L14 16" stroke="#111827" stroke-width="2" stroke-linecap="round"></path>
-                            <ellipse cx="7" cy="8" rx="3" ry="3" transform="rotate(90 7 8)" stroke="#111827"
-                                stroke-width="2" stroke-linecap="round"></ellipse>
-                            <ellipse cx="17" cy="16" rx="3" ry="3" transform="rotate(90 17 16)" stroke="#111827"
-                                stroke-width="2" stroke-linecap="round"></ellipse>
-                        </svg>
-                        <h3 class="mt-6 text-2xl font-bold text-gray-900 sm:mt-10">Integrations</h3>
-                        <p class="mt-6 text-base text-gray-600">Step up your designs and workflow with
-                            integrations with your favourite tools such as mailchimp, slack, jira etc</p>
-                    </div>
-                </div>
-            </div>
-            <div class="overflow-hidden bg-white shadow-md rounded-xl">
-                <div class="p-9"><svg class="w-12 h-12 mx-auto text-gray-400 sm:mx-0" viewBox="0 0 24 24" fill="none"
-                        xmlns="http://www.w3.org/2000/svg">
-                        <rect x="13" y="14" width="2" height="2" rx="1" fill="#111827"></rect>
-                        <rect x="7" y="11" width="2" height="6" rx="1" fill="#111827"></rect>
-                        <rect x="11" y="13" width="2" height="6" rx="1" transform="rotate(90 11 13)" fill="#111827">
-                        </rect>
-                        <rect x="16" y="12" width="2" height="2" rx="1" fill="#111827"></rect>
-                        <path
-                            d="M14 8V8C14 7.58326 14 7.37488 13.9655 7.19144C13.8455 6.5546 13.4245 6.01534 12.8358 5.74455C12.6662 5.66654 12.464 5.616 12.0597 5.51493L12 5.5C11.5388 5.3847 11.3082 5.32706 11.1171 5.233C10.5686 4.96315 10.1737 4.45731 10.0449 3.85979C10 3.65151 10 3.41382 10 2.93845V2"
-                            stroke="#111827" stroke-width="2" stroke-linecap="round"></path>
-                        <path
-                            d="M3 14C3 11.4412 3 10.1618 3.61994 9.28042C3.77954 9.05351 3.96572 8.85041 4.17372 8.6763C4.98164 8 6.15442 8 8.5 8H15.5C17.8456 8 19.0184 8 19.8263 8.6763C20.0343 8.85041 20.2205 9.05351 20.3801 9.28042C21 10.1618 21 11.4412 21 14C21 16.5588 21 17.8382 20.3801 18.7196C20.2205 18.9465 20.0343 19.1496 19.8263 19.3237C19.0184 20 17.8456 20 15.5 20H8.5C6.15442 20 4.98164 20 4.17372 19.3237C3.96572 19.1496 3.77954 18.9465 3.61994 18.7196C3 17.8382 3 16.5588 3 14Z"
-                            stroke="#111827" stroke-width="2"></path>
-                    </svg>
-                    <h3 class="mt-6 text-2xl font-bold text-gray-900 sm:mt-10">Publish webpage online</h3>
-                    <p class="mt-6 text-base text-gray-600">Effortlessly publish your webpages online and make
-                        it available to the world with a click of a button</p>
-                </div>
-            </div>
-            <div class="relative">
-                <div class="absolute -inset-1">
-                    <div
-                        class="w-full h-full rotate-180 opacity-30 blur-lg filter bg-gradient-to-r from-yellow-400 via-pink-500 to-green-600">
-                    </div>
-                </div>
-                <div class="relative overflow-hidden bg-white shadow-md rounded-xl h-full">
-                    <div class="p-9"><svg class="w-12 h-12 mx-auto text-gray-400 sm:mx-0" viewBox="0 0 24 24"
-                            fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M11 8L20 8" stroke="#111827" stroke-width="2" stroke-linecap="round"></path>
-                            <path d="M4 16L14 16" stroke="#111827" stroke-width="2" stroke-linecap="round"></path>
-                            <ellipse cx="7" cy="8" rx="3" ry="3" transform="rotate(90 7 8)" stroke="#111827"
-                                stroke-width="2" stroke-linecap="round"></ellipse>
-                            <ellipse cx="17" cy="16" rx="3" ry="3" transform="rotate(90 17 16)" stroke="#111827"
-                                stroke-width="2" stroke-linecap="round"></ellipse>
-                        </svg>
-                        <h3 class="mt-6 text-2xl font-bold text-gray-900 sm:mt-10">Forms and Data Collection
-                        </h3>
-                        <p class="mt-6 text-base text-gray-600">Collect data and information from users with
-                            forms built on windframe and sort through them in a nice interface</p>
-                    </div>
-                </div>
-            </div>
-            <div class="overflow-hidden bg-white shadow-md rounded-xl">
-                <div class="p-9"><svg class="w-12 h-12 mx-auto text-gray-400 sm:mx-0" viewBox="0 0 24 24" fill="none"
-                        xmlns="http://www.w3.org/2000/svg">
-                        <rect x="13" y="14" width="2" height="2" rx="1" fill="#111827"></rect>
-                        <rect x="7" y="11" width="2" height="6" rx="1" fill="#111827"></rect>
-                        <rect x="11" y="13" width="2" height="6" rx="1" transform="rotate(90 11 13)" fill="#111827">
-                        </rect>
-                        <rect x="16" y="12" width="2" height="2" rx="1" fill="#111827"></rect>
-                        <path
-                            d="M14 8V8C14 7.58326 14 7.37488 13.9655 7.19144C13.8455 6.5546 13.4245 6.01534 12.8358 5.74455C12.6662 5.66654 12.464 5.616 12.0597 5.51493L12 5.5C11.5388 5.3847 11.3082 5.32706 11.1171 5.233C10.5686 4.96315 10.1737 4.45731 10.0449 3.85979C10 3.65151 10 3.41382 10 2.93845V2"
-                            stroke="#111827" stroke-width="2" stroke-linecap="round"></path>
-                        <path
-                            d="M3 14C3 11.4412 3 10.1618 3.61994 9.28042C3.77954 9.05351 3.96572 8.85041 4.17372 8.6763C4.98164 8 6.15442 8 8.5 8H15.5C17.8456 8 19.0184 8 19.8263 8.6763C20.0343 8.85041 20.2205 9.05351 20.3801 9.28042C21 10.1618 21 11.4412 21 14C21 16.5588 21 17.8382 20.3801 18.7196C20.2205 18.9465 20.0343 19.1496 19.8263 19.3237C19.0184 20 17.8456 20 15.5 20H8.5C6.15442 20 4.98164 20 4.17372 19.3237C3.96572 19.1496 3.77954 18.9465 3.61994 18.7196C3 17.8382 3 16.5588 3 14Z"
-                            stroke="#111827" stroke-width="2"></path>
-                    </svg>
-                    <h3 class="mt-6 text-2xl font-bold text-gray-900 sm:mt-10">Custom Domains</h3>
-                    <p class="mt-6 text-base text-gray-600">Attach your own custom domain to your published
-                        projects or website on windframe</p>
-                </div>
-            </div>
-        </div>
+      </div>
+
+      <!-- Middle Column (Image) -->
+      <div class="flex-1">
+        <img src="https://via.placeholder.com/400" alt="Feature Image" class="w-full rounded-lg shadow-lg">
+      </div>
+
+      <!-- Right Column -->
+      <div class="flex-1">
+        <div class="text-3xl font-bold mb-6 text-gray-900">More Features</div>
+        <ul class="space-y-6">
+          <li class="flex items-center">
+            <!-- Icon -->
+            <i class="fas fa-mobile-alt text-2xl text-green-500 mr-4"></i>
+            <span class="font-semibold text-xl text-gray-800">Mobile Friendly</span> - Fully responsive design for all devices.
+          </li>
+          <li class="flex items-center">
+            <!-- Icon -->
+            <i class="fas fa-book text-2xl text-green-500 mr-4"></i>
+            <span class="font-semibold text-xl text-gray-800">Complete Style Guide</span> - Easy customization with a complete guide.
+          </li>
+          <li class="flex items-center">
+            <!-- Icon -->
+            <i class="fas fa-headset text-2xl text-green-500 mr-4"></i>
+            <span class="font-semibold text-xl text-gray-800">Unlimited Support</span> - We're here to help you anytime.
+          </li>
+        </ul>
+      </div>
     </div>
-</section>
+  </div>
 </template>
+
 <script>
 export default {
-  name: "TransparentBackground",
-
-  mounted() {
-    // Select all elements with slide-in classes
-    const elements = document.querySelectorAll(".slide-in-left, .slide-in-right");
-
-    // Create an IntersectionObserver
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          // Check if the element is in the viewport
-          if (entry.isIntersecting) {
-            entry.target.classList.add("animated"); // Add animation class
-            observer.unobserve(entry.target); // Stop observing once animated
-          }
-        });
-      },
-      {
-        threshold: 0.1, // Trigger when 10% of the element is visible
-      }
-    );
-
-    // Observe each element
-    elements.forEach((element) => observer.observe(element));
-  },
+  name: 'FeaturesPage',
 };
 </script>
-<style>
 
-/* Slide-in animations */
-@keyframes slideInLeft {
-  from {
-    transform: translateX(-100%);
-    opacity: 0;
-  }
-  to {
-    transform: translateX(0);
-    opacity: 1;
-  }
-}
-
-@keyframes slideInRight {
-  from {
-    transform: translateX(100%);
-    opacity: 0;
-  }
-  to {
-    transform: translateX(0);
-    opacity: 1;
-  }
-}
-
-.slide-in-left,
-.slide-in-right {
-  opacity: 0; /* Hidden by default */
-  transform: translateX(0); /* Ensure no initial movement */
-}
-
-.slide-in-left.animated {
-  animation: slideInLeft 1s ease-out forwards;
-}
-
-.slide-in-right.animated {
-  animation: slideInRight 1s ease-out forwards;
+<style scoped>
+.feature-item {
+  padding: 10px;
+  border-left: 4px solid #4CAF50; /* Same color as icons */
+  background-color: #f9fafb;
 }
 </style>

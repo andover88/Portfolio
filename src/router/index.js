@@ -3,6 +3,7 @@ import HomeView from '../views/HomeView.vue';
 import ProjectsView from '../views/ProjectsView.vue';
 import ContactView from '../views/ContactView.vue';
 import AboutView from '../views/AboutView.vue';
+import ServicesView from '../views/ServicesView.vue';
 
 
 
@@ -11,6 +12,7 @@ const routes = [
   { path: '/projects', name: 'Projects', component: ProjectsView }, // Unique path for 
   { path: '/contact', name: 'Contact', component: ContactView},
   { path: '/about', name: 'About', component: AboutView},
+  { path: '/services', name: 'Services', component: ServicesView},
 
 
 ];

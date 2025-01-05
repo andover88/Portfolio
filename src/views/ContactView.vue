@@ -64,7 +64,6 @@ export default {
 
 <style scoped>
 .home-view {
-  font-family: 'Roboto', sans-serif;
   margin: 0;
   padding: 0;
   display: flex;
@@ -83,15 +82,7 @@ export default {
   transition: all 0.3s ease-in-out;
 }
 
-footer {
-  margin-top: 30px;
-  padding: 20px;
-  background-color: #333;
-  color: white;
-  text-align: center;
-  font-size: 14px;
-  position: relative;
-}
+
 
 .NavBar {
   background-color: #fff;
@@ -132,15 +123,5 @@ footer {
   }
 }
 
-body {
-  margin: 0;
-  padding: 0;
-  font-family: 'Roboto', sans-serif;
-  background-color: #fafafa;
-  transition: background-color 0.3s ease;
-}
 
-html {
-  scroll-behavior: smooth;
-}
 </style>

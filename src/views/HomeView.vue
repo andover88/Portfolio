@@ -1,118 +1,89 @@
 <template>
-  <div id="app">
-    
-    
-    <!-- <BackgroundSection /> -->
- <!-- Section with sticky background -->
- <div id="sticky-background-container" class="relative">
-  
-<MainContent />
-<!-- <ProjectsComponent /> -->
-  <!-- Scrolling content layer -->
-  <div class="parallax_container">
-<Background />
-<CounterComponent />
+  <div class="relative bg-transparent">
+    <!-- Parallax Background -->
+    <div class="absolute top-0 left-0 w-full h-full bg-contain bg-fixed bg-center" style="background-image: url('../assets/face.jpg');"></div>
 
-<Gallary />
- 
-  </div>
-</div>
+    <!-- Main Content Section -->
+    <div class="relative z-10">
+      <!-- Header -->
+      <header class="bg-gray-800 text-white py-6 text-center">
+        <NavBar />
+      </header>
 
-   
-    <!-- <CounterComponent /> -->
-    <LoadingAnimation :isLoading="isLoading" />
-    <div v-show="!isLoading" :class="{'content-loaded': !isLoading}" class="main-content">
-      <!-- Main content of your app -->
+      <!-- First Component (with Parallax Effect) -->
+      <section class="relative py-16 px-6 md:px-12 text-center">
+        <div class="absolute inset-0 opacity-50"></div>
+        <div class="relative z-10">
+          <HeroSection />
+        </div>
+      </section>
+
+      <!-- Second Component (with Parallax Effect) -->
+      <section class="relative py-16 px-6 md:px-12 text-center">
+        <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-50"></div>
+        <div class="relative z-10">
+          <AboutComponent />
+          <!-- <CounterComponent /> -->
+          <TimeLineComponent />
+        </div>
+      </section>
+
+      <!-- Third Component (with Parallax Effect) -->
+      <section class="relative py-16 px-6 md:px-12 text-center">
+        <div class="absolute inset-0 opacity-50">
+          
+        </div>
+        
+        <div class="relative z-10">
+          
+          <div class="sticky top-0 bg-white z-20">
+            <ProjectsComponent />
+          </div>
+          <Footer />
+        </div>
+      </section>
     </div>
-
-    <!-- Hero Content -->
-<Footer />
-    
   </div>
-  <NavBar  />
-  
-
 </template>
 
 <script>
-import LoadingAnimation from "../components/LoadingAnimation.vue";
-import Background from "../components/Background.vue";
-import Gallary from "../components/Gallary.vue";
-import GridComponent from "../components/GridComponent.vue";
-
-
+import NavBar from "../components/NavBar.vue"; // Adjust the path as needed
+import HeroSection from "../components/HeroSection.vue"; // Adjust the path as needed
 import CounterComponent from "../components/CounterComponent.vue";
+import TimeLineComponent from "../components/TimeLineComponent.vue";
 import Footer from "../components/Footer.vue";
-
-import NavBar from "../components/NavBar.vue";
+import ProjectsComponent from "../components/ProjectsComponent.vue"; // Gallery component
+import AboutComponent from "../components/AboutComponent.vue";
 
 export default {
+  name: 'ParallaxPage',
   components: {
-    LoadingAnimation,
-    Background,
-    Gallary,
     NavBar,
+    HeroSection,
+    AboutComponent,
     CounterComponent,
-    GridComponent,
+    TimeLineComponent,
+    ProjectsComponent,
     Footer,
-  },
-  data() {
-    return {
-      isLoading: true, // Control visibility of the main content
-      isSticky: false, // Control sticky navbar state
-    };
-  },
-  mounted() {
-    // Simulate loading time, hide after 2 seconds
-    setTimeout(() => {
-      this.isLoading = false;
-    }, 2000);
-
-    // Listen to the scroll event to toggle sticky navbar
-    window.addEventListener('scroll', this.handleScroll);
-  },
-  beforeDestroy() {
-    // Clean up event listener on component destroy
-    window.removeEventListener('scroll', this.handleScroll);
-  },
-  methods: {
-    handleScroll() {
-      // Set sticky state when scrolled past 100px
-      if (window.scrollY > 100) {
-        this.isSticky = true;
-      } else {
-        this.isSticky = false;
-      }
-    },
   },
 };
 </script>
 
 <style scoped>
-/* Sticky Navbar Styling */
-.sticky {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 10;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+/* Parallax effect styles */
+section {
+  position: relative;
+  overflow: hidden;
 }
 
-/* Hero Content Animation */
-.hero-appear {
-  transform: translateY(100vh); /* Start from the bottom */
-  opacity: 0;
-  animation: hero-slide-up 1s forwards; /* Animation to slide up */
+section .absolute {
+  transform: translateY(-30%); /* Adjust the parallax scroll effect */
 }
 
-@keyframes hero-slide-up {
-  to {
-    transform: translateY(0); /* End at normal position */
-    opacity: 1;
-  }
+section:nth-child(odd) .absolute {
+  transform: translateY(30%); /* Adjust the parallax scroll effect */
 }
 
-/* Other styles... */
+/* Sticky styles for third component */
 
 </style>

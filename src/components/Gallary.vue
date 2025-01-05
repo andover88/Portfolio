@@ -1,300 +1,320 @@
 <template>
-  <div class="parallax_container">
-    <div class="center-container">
-  <h1>APIs are essential</h1>
-  <div>
-    <router-link class="pro" to="/projects">Projects</router-link>
-    <router-view></router-view>
+  <div v-if="!isLoading" class=" projects-container ">
+    <div
+  v-for="(project, index) in projects"
+  :key="index"
+  class="project-card sticky top-0 px-6 py-3 text-red-900 bg-red-300 w-full max-w-screen-md mx-auto overflow-hidden"
+>      <h2>{{ project.title }}</h2>
+      <ul>
+        <li v-for="(tool, i) in project.toolsUsed" :key="i">{{ tool }}</li>
+      </ul>
+      <button @click="openModal(index)" class="view-project-btn">View Project</button>
+    </div>
   </div>
-</div>
 
-    <div class="parallax_layer_1 basic_setting ">
-      <video autoplay muted loop class="video-background" >
-        <source src="../assets/video/burnout.mp4" type="video/mp4" />
-        Your browser does not support the video tag.
-      </video>
+  <!-- Modal for viewing project details -->
+  <div v-if="isModalOpen" class="modal-overlay  mx-auto">
+    <div class="modal h-screen  mx-auto ">
+      <span class="close" @click="closeModal">&times;</span>
+      <h2>{{ currentProject.title }}</h2>
+      <p v-if="isModalOpen" class="project-description">{{ currentProject.description }}</p>
+      <ul>
+        <li v-for="(tool, i) in currentProject.toolsUsed" :key="i">{{ tool }}</li>
+      </ul>
+      <div class="image-slideh-minr mx-auto    ">
+        <img class="h-96 mx-auto" :src="currentProject.images[currentSlide]" alt="Project Image">
+        <button @click="prevSlide" class="slider-btn">Prev</button>
+        <button @click="nextSlide" class="slider-btn">Next</button>
+      </div>
+      <a :href="currentProject.githubLink" target="_blank" class="github-link">{{ currentProject.githubButton.text }}</a>
     </div>
-    <div class="parallax_layer_2 basic_setting">
-      <img class="g" src="../assets/googleimg.jpg">
-   
-    </div>
-    <div class="parallax_layer_3 basic_setting">
-      <video autoplay muted loop class="video-background" >
-        <source src="../assets/video/movies.mp4" type="video/mp4" />
-        Your browser does not support the video tag.
-      </video>
-    </div>
-    <div class="parallax_layer_4 basic_setting">
-      <video autoplay muted loop class="video-background" >
-        <source src="../assets/video/url.mp4" type="video/mp4" />
-        Your browser does not support the video tag.
-      </video>
-    </div>
-    <button class="parallax_layer_5 basic_setting"></button>
- 
   </div>
-  </template>
-  <style >
-@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
-.center-container {
-  display: flex;
-  flex-direction: column; /* Stack items vertically */
-  align-items: center;    /* Center items horizontally */
-  justify-content: center; /* Center items vertically */
-  text-align: center;     /* Center text */
-  margin-bottom: 20vh;
-}
+</template>
 
-h1 {
-  margin-bottom: 20px; /* Add space between the heading and the div */
-  font-family: "Sigmar One", serif;
-  font-weight: 400;
-  font-style: normal;
-}
-
-* {
-  margin: 0px;
-  padding: 0px;
-  box-sizing: border-box;
-}
-.pro {
-  font-family: "Bubbler One", serif;
-  font-weight: 400;
-  font-style: normal;
-}
-.parallax_container {
-  width: 100vw;
-  height: 100vh;
-  overflow-y: scroll;
-  overflow-x: hidden;
-  perspective: 10px;
-  background: black;
-}
-
-.parallax_container .basic_setting {
-  background-size: cover;
-  background-repeat: no-repeat;
-  width: auto;
-  height: auto;
-  position: absolute;
-  top: 0px;
-  box-shadow: inset 0px 0px 300px black;
-  filter: brightness(100%);
-  transition: filter 0.5s;
-  
-}
-
-.parallax_container .basic_setting:hover {
-  filter: brightness(130%);
-}
-
-.parallax_container .parallax_layer_1 {
-  transform: translateZ(-2px) rotateZ(0deg);
-
-  top: -0;
-  left: 5%;
-  background-position: center;
-}
-.video-background{
-  width: 200%;
-  height: 400px;
-}
-.g{
-  transform: rotateZ(0deg);
- 
-}
-.parallax_container .parallax_layer_2 {
-  transform: rotateZ(0deg);
-  top: 130%;
-  top: 100%;
-  right: 10%;
-  width: 50%;
-  height: 80%;
-  
-
-}
-
-.parallax_container .parallax_layer_3 {
-  top: 20%;
-  left: -40%;
-  transform: translateZ(-10px) rotateZ(0deg);
-
-  background-size: 900px;
-}
-
-.parallax_container .parallax_layer_4 {
-  top:150%;
-  left: -0%;
-  background-position: center;
-
-  background-size: 1000px ;
-  transform: translateZ(-18px) rotateZ(0deg);
-}
-
-.parallax_container .parallax_layer_5 {
-  outline: 0px;
-  border: 0px;
-  top: 180%;
-  left: 5%;
- 
-  background-size:300px ;
-
-  transform: rotateZ(0deg);
-  background-image: url("../assets/port.jpg");
-  transition: all 0.3s;
-  background-size: 200px 200px;
-  background-image: radial-gradient(
-      2px 2px at 40px 60px,
-      #ccc,
-      rgba(0, 0, 0, 0)
-    ),
-    radial-gradient(2px 2px at 20px 50px, #ddd, rgba(0, 0, 0, 0)),
-    radial-gradient(2px 2px at 30px 100px, #eee, rgba(0, 0, 0, 0)),
-    radial-gradient(2px 2px at 40px 60px, rgb(0, 255, 0), rgba(0, 0, 0, 0)),
-    radial-gradient(2px 2px at 110px 90px, rgb(255, 0, 0), rgba(0, 0, 0, 0)),
-    radial-gradient(2px 2px at 190px 150px, rgb(255, 200, 0), rgba(0, 0, 0, 0));
-  background-repeat: repeat;
-}
-
-.parallax_container .parallax_layer_5:hover {
-  cursor: pointer;
-}
-
-.parallax_container .parallax_layer_5:focus {
-  cursor: pointer;
-  transform: rotateZ(0deg);
-  top: 130%;
-  left: 10%;
-  width: 80%;
-  height: 80%;
-}
-
-.parallax_container .footer {
-  color: white;
-  width: 100%;
-  text-align: center;
-  position: absolute;
-  top: 210%;
-}
-
-.parallax_container .footer a {
-  color: white;
-}
-
-::-webkit-scrollbar {
-  width: 10px;
-  height: 10px;
-}
-
-::-webkit-scrollbar-track {
-  background-color: #ececec;
-}
-
-::-webkit-scrollbar-thumb {
-  background-color: rgba(56, 89, 100, 0.4);
-  border: 2px solid #e3e7f0;
-}
-
-::-webkit-scrollbar-button {
-  height: 0px;
-  background: red;
-  width: 0px;
-}
-
-::-webkit-scrollbar-corner {
-  margin-top: 20px;
-  background-color: #e3e7f1;
-}
+<script>
+export default {
+  data() {
+    return {
+      isLoading: true, // Loading state
+      isPageLoaded: false, // Animation state
+      isModalOpen: false, // Modal state
+      currentProject: null, // Current project in modal
+      currentSlide: 0, // Current slide index
+      projects: [
+        {
+          title: "CarGram",
+          description: "CarGram is a unique image-sharing app designed exclusively for car enthusiasts! Leveraging the powerful Imagga API, CarGram ensures that every image uploaded to the platform is of a car.Secure Authentication: Built with Jetstream, CarGram ensures a secure and reliable user authentication experience. Enjoy effortless login, registration, and password management with advanced features",
+          toolsUsed: ["Laravel", "Vue Js", "Tailwind", "Jetstream"],
+          githubLink: "https://github.com/andover88/ImageRecognition.git",
+          images: [
+            "./src/assets/bmw.jpg",
+            "https://images.unsplash.com/photo-1524102724373-bcf6ed410592?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8c3BvcnRzJTIwY2FyfGVufDB8fDB8fHww",
+            "https://images.unsplash.com/photo-1602447853028-5d7df0560b12?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDQyfHx8ZW58MHx8fHx8"
+          ],
+          githubButton: {
+            text: "View on GitHub",
+            link: "https://github.com/andover88/ImageRecognition.git"
+          }
+        },
+        {
+          title: "Shortify: Simplify Your URLs",
+          description: "Shortify is a user-friendly app designed to transform lengthy URLs into concise, manageable links using the reliable TinyURL API. Whether you're sharing links on social media, in emails, or during presentations, Shortify ensures your links are easy to share and aesthetically pleasing.",
+          toolsUsed: ["LAravel", "Vue Js", "Tailwind"],
+          githubLink: "https://github.com/andover88/Url_shorty",
+          images: [
+            "../src/assets/tiny.png", "https://images.pexels.com/photos/2882690/pexels-photo-2882690.jpeg?auto=compress&cs=tinysrgb&w=600"
+          ],
+          githubButton: {
+            text: "View on GitHub",
+            link: "https://github.com/andover88/Url_shorty"
+          }
+        },
+        {
+          title: "The Watchers",
+          description: "CineScope is a sleek and powerful app that lets you explore the world of movies and celebrities like never before. Powered by a robust Movie API, CineScope provides a seamless experience to search for movies, discover what's currently playing in theaters, and dive into the lives of your favorite celebrities.",
+          toolsUsed: ["Python", "Flask", "React Js"],
+          githubLink: "https://github.com/yourusername/project3",
+          images: [
+            "../src/assets/movies.jpg","../src/assets/watchers.png", "../src/assets/celebs.png", 
+          ],
+          githubButton: {
+            text: "View on GitHub",
+            link: "https://github.com/yourusername/project3"
+          }
+        },
+        {
+          title: "NoteSync",
+          description: "NoteSync is a modern, secure, and intuitive app designed to simplify your life by combining the power of note-taking with calendar management. With Google Authentication 2.0, NoteSync ensures a seamless and secure login experience, so your data stays protected and accessible only to you.",
+          toolsUsed: ["Flask", "React Js", "Google Api"],
+          githubLink: "https://github.com/andover88/projectx",
+          images: [
+            "project4-1.jpg", "project4-2.jpg", "project4-3.jpg"
+          ],
+          githubButton: {
+            text: "View on GitHub",
+            link: "https://github.com/andover88/projectx"
+          }
+        },
+        {
+          title: "ShopMaster",
+          description: "ShopMaster is a feature-rich e-commerce application designed to deliver a seamless shopping experience for customers while empowering administrators with full control over product management. Whether you’re shopping for your favorite items or managing your online store, ShopMaster makes it simple, efficient, and intuitive.",
+          toolsUsed: ["PHP", "Bootstrap", "MySql"],
+          githubLink: "https://github.com/yourusername/project5",
+          images: [
+            "project5-1.jpg", "project5-2.jpg", "project5-3.jpg"
+          ],
+          githubButton: {
+            text: "View on GitHub",
+            link: "https://github.com/yourusername/project5"
+          }
+        }
+      ]
+    };
+  },
+  mounted() {
+    // Show loading animation for 3 seconds
+    setTimeout(() => {
+      this.isLoading = false;
+      this.isPageLoaded = true; // Trigger slide-in animation
+    }, 3000);
+  },
+  methods: {
+    openModal(index) {
+      this.currentProject = this.projects[index];
+      this.currentSlide = 0;
+      this.isModalOpen = true;
+    },
+    closeModal() {
+      this.isModalOpen = false;
+    },
+    prevSlide() {
+      this.currentSlide =
+        (this.currentSlide - 1 + this.currentProject.images.length) %
+        this.currentProject.images.length;
+    },
+    nextSlide() {
+      this.currentSlide =
+        (this.currentSlide + 1) % this.currentProject.images.length;
+    }
+  }
+};
+</script>
+<style scoped>
+/* Global Styles */
 * {
   margin: 0;
   padding: 0;
-}
-body {
-  font: 100% / 1.5 Arial;
-/*   background: linear-gradient(135deg, #3e028c -50%, #000 100%); */
-  background-image: linear-gradient(135deg, #e7627d 0%, #b8235a 25%, #801357 50%, #3d1635 75%, #1c1a27 100%);
-}
-::-webkit-scrollbar { 
-    display: none; 
-}
-.fixed {
-  position: fixed;
-  color: white;
-  font-weight: 700;
-  text-align: center;
-  width: 100vw;
-  top: 50%;
-  font-size: 24px;
-}
-.parallax {
-  height: 100vh;
-  overflow-x: hidden;
-  overflow-y: auto;
-  -webkit-perspective: 1px;
-  perspective: 1px;
+  box-sizing: border-box;
 }
 
-.parallax__layer {
-  position: absolute;
+
+/* Container for Projects */
+.projects-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 3fr));
+  position: relative; /* Ensure the parent is scrollable for sticky */
+  height: 100vh; /* Adjust height to allow scrolling */
+  width: 100%;
+  overflow-x: hidden;
+  margin: auto;
+
+  
+  /* Centering the grid container */
+  place-items: center;
+}
+
+/* Individual Project Cards */
+.project-card {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.3s ease-in-out;
+  padding: 20px;
+  text-align: center;
+  height: 500px;
+  margin:auto;
+
+}
+
+.sticky {
+position: sticky;
+top: 0;
+z-index: 20;
+background-color: white; /* Optional: change background color when sticky */
+box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Optional: add shadow for effect */
+}
+.project-card:hover {
+  transform: translateY(-10px);
+}
+
+.project-card h2 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+  font-family: "MuseoModerno", serif;
+font-optical-sizing: auto;
+font-weight:900;
+font-style: normal;
+}
+
+.project-card ul {
+  list-style-type: none;
+  padding: 0;
+  margin-bottom: 20px;
+}
+
+.project-card ul li {
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.view-project-btn {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s;
+}
+
+.view-project-btn:hover {
+  background-color: #0056b3;
+}
+
+/* Modal Styles */
+.modal-overlay {
+  position: fixed;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
 }
 
-.parallax__layer--base {
-  -webkit-transform: translateZ(0);
-  transform: translateZ(0);
+.modal {
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 10px;
+  max-width: 800px;
+  width: 90%;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  position: relative;
 }
 
-.parallax__layer--back {
-  -webkit-transform: translateZ(-2px) scale(3);
-  transform: translateZ(-2px) scale(3);
-}
-.parallax__layer--back2 {
-  -webkit-transform: translateZ(-6px) scale(5);
-  transform: translateZ(-6px) scale(5);
-}
-.parallax__layer--back3 {
-  -webkit-transform: translateZ(-12px) scale(6);
-  transform: translateZ(-12px) scale(6);
+.modal h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  font-family: "MuseoModerno", serif;
+font-optical-sizing: auto;
+font-weight:900;
+font-style: normal;
 }
 
-/* add some padding to force scrollbars */
-.parallax__layer {
-  padding: 100vh 0;
+.project-description {
+  font-size: 1rem;
+  color: #555;
+  margin-bottom: 20px;
+  
+  
 }
 
-.starfield > * {
-  background-size: 200px 200px;
-  background-image: radial-gradient(
-      2px 2px at 40px 60px,
-      #ccc,
-      rgba(0, 0, 0, 0)
-    ),
-    radial-gradient(2px 2px at 20px 50px, #ddd, rgba(0, 0, 0, 0)),
-    radial-gradient(2px 2px at 30px 100px, #eee, rgba(0, 0, 0, 0)),
-    radial-gradient(2px 2px at 40px 60px, rgb(0, 255, 0), rgba(0, 0, 0, 0)),
-    radial-gradient(2px 2px at 110px 90px, rgb(255, 0, 0), rgba(0, 0, 0, 0)),
-    radial-gradient(2px 2px at 190px 150px, rgb(255, 200, 0), rgba(0, 0, 0, 0));
-  background-repeat: repeat;
-}
-.starfield > * {
-  position: absolute;
-  top: -250%;
-  left: 0;
-  height: 500%;
+.image-slider img {
   width: 100%;
+  height: 300px;
+  border-radius: 10px;
+  margin-bottom: 20px;
 }
 
-.starfield span:nth-child(2) {
-  transform: rotate(45deg);
-}
-.starfield span:nth-child(3) {
-  transform: rotate(69deg);
-}
-.starfield span:nth-child(4) {
-  transform: rotate(123deg);
+.slider-btn {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  margin: 5px;
+  transition: background-color 0.3s;
+  margin-bottom: 20px;
+  font-family: "MuseoModerno", serif;
+font-optical-sizing: auto;
+font-weight:900;
+font-style: normal;
 }
 
+.slider-btn:hover {
+  background-color: #0056b3;
+}
+
+.github-link {
+  display: inline-block;
+  margin-top: 20px;
+  color: #007bff;
+  text-decoration: none;
+  font-size: 1.1rem;
+}
+
+.github-link:hover {
+  text-decoration: underline;
+}
+
+.close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 2rem;
+  cursor: pointer;
+  color: #333;
+}
+
+.close:hover {
+  color: #007bff;
+}
 </style>
