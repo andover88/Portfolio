@@ -1,10 +1,10 @@
+const path = require('path');
 module.exports = {
-    configureWebpack: {
-      resolve: {
-        alias: {
-          jquery: 'jquery/src/jquery',
-        },
+  configureWebpack: {
+    resolve: {
+      alias: {
+        '@': path.resolve(__dirname, 'src'),
       },
     },
-  };
-  
+  },
+};
