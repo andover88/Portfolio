@@ -1,89 +1,85 @@
 <template>
-  <div class="relative bg-transparent">
-    <!-- Parallax Background -->
-    <div class="absolute top-0 left-0 w-full h-full bg-contain bg-fixed bg-center" style="background-image: url('../assets/face.jpg');"></div>
 
-    <!-- Main Content Section -->
-    <div class="relative z-10">
-      <!-- Header -->
-      <header class="bg-gray-800 text-white py-6 text-center">
-        <NavBar />
-      </header>
-
-      <!-- First Component (with Parallax Effect) -->
-      <section class="relative py-16 px-6 md:px-12 text-center">
-        <div class="absolute inset-0 opacity-50"></div>
-        <div class="relative z-10">
-          <HeroSection />
-        </div>
-      </section>
-
-      <!-- Second Component (with Parallax Effect) -->
-      <section class="relative py-16 px-6 md:px-12 text-center">
-        <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-50"></div>
-        <div class="relative z-10">
-          <AboutComponent />
-          <!-- <CounterComponent /> -->
-          <TimeLineComponent />
-        </div>
-      </section>
-
-      <!-- Third Component (with Parallax Effect) -->
-      <section class="relative py-16 px-6 md:px-12 text-center">
-        <div class="absolute inset-0 opacity-50">
-          
-        </div>
-        
-        <div class="relative z-10">
-          
-          <div class="sticky top-0 bg-white z-20">
-            <ProjectsComponent />
-          </div>
-          <Footer />
-        </div>
-      </section>
-    </div>
-  </div>
+        <OneNavBar />
+        <TwoHeroComponent />
+        <ThreeCreateSection />
+        <!-- <FourPricesComponen /> -->
+        <FiveFeaturesComponent />
+        <Footer />
+   
 </template>
 
 <script>
-import NavBar from "../components/NavBar.vue"; // Adjust the path as needed
-import HeroSection from "../components/HeroSection.vue"; // Adjust the path as needed
-import CounterComponent from "../components/CounterComponent.vue";
-import TimeLineComponent from "../components/TimeLineComponent.vue";
 import Footer from "../components/Footer.vue";
-import ProjectsComponent from "../components/ProjectsComponent.vue"; // Gallery component
-import AboutComponent from "../components/AboutComponent.vue";
+
+import FiveFeaturesComponent from "../components/FiveFeaturesComponent.vue";
+import FourPricesComponen from "../components/FourPricesComponen.vue";
+import OneNavBar from "../components/OneNavBar.vue";
+import ThreeCreateSection from "../components/ThreeCreateSection.vue";
+import TwoHeroComponent from "../components/TwoHeroComponent.vue";
+
 
 export default {
-  name: 'ParallaxPage',
+  name: "ParallaxPage",
   components: {
-    NavBar,
-    HeroSection,
-    AboutComponent,
-    CounterComponent,
-    TimeLineComponent,
-    ProjectsComponent,
-    Footer,
+    OneNavBar,
+    TwoHeroComponent,
+    ThreeCreateSection,
+    FourPricesComponen,
+    FiveFeaturesComponent,
+    Footer
+  },
+  data() {
+    return {
+      hideNav: false,
+      lastScrollY: 0,
+    };
+  },
+  methods: {
+    handleScroll() {
+      const currentScrollY = window.scrollY;
+      this.hideNav = currentScrollY > this.lastScrollY; // Hide on scroll down, show on scroll up
+      this.lastScrollY = currentScrollY;
+    },
+  },
+  mounted() {
+    this.lastScrollY = window.scrollY; // Initialize last scroll position
+    window.addEventListener("scroll", this.handleScroll);
+  },
+  beforeDestroy() {
+    window.removeEventListener("scroll", this.handleScroll);
   },
 };
 </script>
 
 <style scoped>
-/* Parallax effect styles */
+/* General Section Styling */
 section {
   position: relative;
   overflow: hidden;
 }
 
+/* Parallax Effect for Sections */
 section .absolute {
-  transform: translateY(-30%); /* Adjust the parallax scroll effect */
+  transform: translateY(-30%);
 }
 
 section:nth-child(odd) .absolute {
-  transform: translateY(30%); /* Adjust the parallax scroll effect */
+  transform: translateY(30%);
 }
 
-/* Sticky styles for third component */
+/* Navbar Styles */
+.sticky {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
 
+.-translate-y-full {
+  transform: translateY(-100%);
+}
+
+.transition-transform {
+  transition: transform 0.3s ease-in-out;
+}
 </style>

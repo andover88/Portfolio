@@ -1,127 +1,126 @@
 <template>
-  <div class="home-view">
-    <NavBar />
-    
-    <!-- Wrapper for content with parallax effect -->
-    <div class="content-wrapper">
-      <Contact />
+    <OneNavBar />
+    <div class="relative min-h-screen bg-gray-100 flex flex-col items-center py-10 px-4 z-100">
+      <!-- Upside-Down Background -->
+      <!-- Abstract Curved Lines -->
+      <svg
+  class="absolute inset-0 w-full h-full transform rotate-180 -z-1"
+  xmlns="http://www.w3.org/2000/svg"
+  preserveAspectRatio="none"
+  viewBox="0 0 1440 320"
+>
+  <!-- Define Gradient -->
+  <defs>
+    <linearGradient id="darkToLight" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#333333; stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#f0f0f0; stop-opacity:1" />
+    </linearGradient>
+  </defs>
+
+  <!-- Paths with Gradient Fill -->
+  <path
+    fill="url(#darkToLight)"
+    fill-opacity=".1"
+    d="M0,192L48,186.7C96,181,192,171,288,144C384,117,480,75,576,90.7C672,107,768,181,864,202.7C960,224,1056,192,1152,176C1248,160,1344,160,1392,160L1440,160L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"
+  ></path>
+  <path
+    fill="url(#darkToLight)"
+    fill-opacity=".1"
+    d="M0,64L48,85.3C96,107,192,149,288,165.3C384,181,480,171,576,165.3C672,160,768,160,864,176C960,192,1056,224,1152,208C1248,192,1344,128,1392,96L1440,64L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"
+  ></path>
+</svg>
+
+      <h1 class="text-4xl font-bold text-gray-800 mb-4">Contact Me</h1>
+      <p class="text-lg text-gray-600 text-center">
+        Feel free to reach out to me through any of the platforms below.
+      </p>
+  
+      <!-- Contact Links -->
+      <div class="flex flex-col space-y-4 w-full md:w-auto md:space-y-0 md:flex-row md:space-x-6">
+        <!-- Email -->
+        <a 
+          href="mailto:andovercien@gmail.com" 
+          class="flex items-center justify-center px-6 py-3 bg-blue-600 text-white rounded-lg shadow-lg hover:bg-blue-700 transition duration-200"
+        >
+          Email Me
+        </a>
+        
+        <!-- Phone -->
+        <a 
+          href="tel:+6264379698" 
+          class="flex items-center justify-center px-6 py-3 bg-green-600 text-white rounded-lg shadow-lg hover:bg-green-700 transition duration-200"
+        >
+          Call Me
+        </a>
+        
+        <!-- LinkedIn -->
+        <a 
+          href="https://www.linkedin.com/in/fernando-vergara/" 
+          target="_blank" 
+          class="flex items-center justify-center px-6 py-3 bg-blue-800 text-white rounded-lg shadow-lg hover:bg-blue-900 transition duration-200"
+        >
+          LinkedIn
+        </a>
+        
+        <!-- GitHub -->
+        <a 
+          href="https://github.com/andover88" 
+          target="_blank" 
+          class="flex items-center justify-center px-6 py-3 bg-gray-800 text-white rounded-lg shadow-lg hover:bg-gray-900 transition duration-200"
+        >
+          GitHub
+        </a>
+      </div>
     </div>
-    
     <Footer />
-  </div>
-</template>
-
-<script>
-import NavBar from '@/components/NavBar.vue'; 
-import Contact from '@/components/Contact.vue'; 
-import Footer from '@/components/Footer.vue'; 
-
-export default {
-  name: 'HomeView',
-  components: {
-    NavBar,
-    Contact,
-    Footer,
-  },
-  mounted() {
-    window.addEventListener("scroll", this.handleScroll);
-  },
-  beforeDestroy() {
-    window.removeEventListener("scroll", this.handleScroll);
-  },
-  methods: {
-    handleScroll() {
-      const scrollPosition = window.scrollY;
-      
-      // Apply parallax effect on individual components
-      this.applyParallaxEffect(scrollPosition);
+  </template>
+  
+  <script>
+  import Footer from "../components/Footer.vue";
+  
+  import FiveFeaturesComponent from "../components/FiveFeaturesComponent.vue";
+  import FourPricesComponen from "../components/FourPricesComponen.vue";
+  import OneNavBar from "../components/OneNavBar.vue";
+  import ThreeCreateSection from "../components/ThreeCreateSection.vue";
+  import TwoHeroComponent from "../components/TwoHeroComponent.vue";
+  
+  
+  export default {
+    name: "ContactPage",
+    components: {
+      OneNavBar,
+      TwoHeroComponent,
+      ThreeCreateSection,
+      FourPricesComponen,
+      FiveFeaturesComponent,
+      Footer
     },
-
-    applyParallaxEffect(scrollPosition) {
-      // Parallax effect for each component
-      const grid = this.$refs.grid;
-      const about = this.$refs.about;
-      const timeline = this.$refs.timeline;
-
-      // Apply parallax effect for GridComponent
-      if (grid) {
-        grid.style.transform = `translateY(${scrollPosition * 0.2}px)`;  // Adjust speed as needed
-      }
-
-      // Apply parallax effect for AboutComponent
-      if (about) {
-        about.style.transform = `translateY(${scrollPosition * 0.3}px)`;  // Adjust speed as needed
-      }
-
-      // Apply parallax effect for TimeLineComponent
-      if (timeline) {
-        timeline.style.transform = `translateY(${scrollPosition * 0.4}px)`;  // Adjust speed as needed
-      }
-    }
-  },
-};
-</script>
-
-<style scoped>
-.home-view {
-  margin: 0;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  height: 100vh;
-}
-
-.content-wrapper {
-  flex-grow: 1;
-  padding: 50px 20px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: linear-gradient(135deg, #f1f1f1, #e2e2e2);
-  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.1);
-  transition: all 0.3s ease-in-out;
-}
-
-
-
-.NavBar {
-  background-color: #fff;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-.NavBar ul {
-  display: flex;
-  justify-content: space-around;
-  padding: 10px;
-  margin: 0;
-  list-style-type: none;
-}
-
-.NavBar li {
-  font-size: 16px;
-  font-weight: bold;
-}
-
-.NavBar a {
-  color: #333;
-  text-decoration: none;
-  transition: color 0.3s ease;
-}
-
-.NavBar a:hover {
-  color: #007BFF;
-}
-
-@media (max-width: 768px) {
-  .NavBar ul {
-    flex-direction: column;
-    align-items: center;
+    data() {
+      return {
+        hideNav: false,
+        lastScrollY: 0,
+      };
+    },
+    methods: {
+      handleScroll() {
+        const currentScrollY = window.scrollY;
+        this.hideNav = currentScrollY > this.lastScrollY; // Hide on scroll down, show on scroll up
+        this.lastScrollY = currentScrollY;
+      },
+    },
+    mounted() {
+      this.lastScrollY = window.scrollY; // Initialize last scroll position
+      window.addEventListener("scroll", this.handleScroll);
+    },
+    beforeDestroy() {
+      window.removeEventListener("scroll", this.handleScroll);
+    },
+  };
+  </script>
+  
+  <style scoped>
+  svg {
+    pointer-events: none;
   }
-
-  .content-wrapper {
-    padding: 20px;
-  }
-}
-
-
-</style>
+  </style>
+  
